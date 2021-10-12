@@ -1,10 +1,10 @@
 # Final-Project-5-Frontend
 
-# StockTrkr (name in progress)
+## StockTrkr (name in progress)
 
-# StockTrkr is an application to create orders to purchase stocks to a portfolio, sell stocks 
-# for cash, and add interested stocks to a watchlist. I plan on using an external API from YAHOO Finance
-# (Loads of others to use from) as my data source for my Application.
+StockTrkr is an application to create orders to purchase stocks to a portfolio, sell stocks 
+for cash, and add interested stocks to a watchlist. I plan on using an external API from YAHOO Finance
+(Loads of others to use from) as my data source for my Application.
 
 ## User Story:
   - Create and Account
