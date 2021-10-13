@@ -9,17 +9,17 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
 ## User Story:
   - Create and Account
   - Login/Logout
-  - Search/Research a Stocks YTD Performance
-  - Create an order
+  - Create an order (trade)
   - Create a Portfolio
   - Purchase a stock (Added to Portfolio)
   - Sell a stock (Removed from Portfolio)
   - Add stocks to personal watchlist
+  - Research Stock Performance in Trade component
 
 
 ## Model & Relationships
 
- <img width="989" alt="Screen Shot 2021-10-12 at 2 46 32 PM" src="https://user-images.githubusercontent.com/41453073/137033494-c02b924c-a9b4-4572-b8d8-b0017a15842f.png">
+ <img width="1192" alt="Screen Shot 2021-10-12 at 6 48 48 PM" src="https://user-images.githubusercontent.com/41453073/137052911-82a36663-46b9-4a84-a877-8e1096e87da6.png">
 
 ## API / ROUTES
 
@@ -30,11 +30,14 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
 
 ## GET /api/user/:id
 
-{ 
+``{ 
   id: 1,
   username: "johnnyboy",
   email: "jobo@gmail.com",
   password_digest: ""
-}
+}``
 
-TBCont.
+## Stretch Goals
+
+-Add more intricate market performance, graphs
+
