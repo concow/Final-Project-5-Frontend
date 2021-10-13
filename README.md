@@ -7,7 +7,7 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
 (Loads of others to use from) as my data source for my Application.
 
 ## User Story:
-  - Create and Account
+  - Create Account
   - Login/Logout
   - Create an order (trade)
   - Create a Portfolio
