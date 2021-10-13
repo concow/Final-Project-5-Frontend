@@ -19,7 +19,8 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
 
 ## Model & Relationships
 
- <img width="1192" alt="Screen Shot 2021-10-12 at 6 48 48 PM" src="https://user-images.githubusercontent.com/41453073/137052911-82a36663-46b9-4a84-a877-8e1096e87da6.png">
+ <img width="1072" alt="Screen Shot 2021-10-12 at 8 50 58 PM" src="https://user-images.githubusercontent.com/41453073/137064199-119c73c8-43b2-4fe8-9faf-977b2bbb2903.png">
+
 
 ## API / ROUTES
 
