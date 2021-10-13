@@ -34,10 +34,48 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
   id: 1,
   username: "johnnyboy",
   email: "jobo@gmail.com",
-  password_digest: ""
+  password_digest: "",
+  user_balance: 10000
 }``
+
+## POST /api/user
+
+``{ 
+  username: "johnnyboy",
+  password : "password",
+  user_balance: 10000
+}``
+
+## POST /api/orders
+
+``{ 
+  quantity: 25,
+  stock: Tesla,
+  buy: true
+}``
+
+## GET /api/portfolio/:id
+
+``{ 
+  id: 1,
+  user_id: 3,
+  { include: stocks_purchased }
+}``
+
+## GET /api/stocks/:id
+
+``{ 
+  id: 45,
+  company: Nvidia
+  symbol: NVDA
+  price: 206.71
+}``
+
+## Wireframe
+
+<img width="571" alt="Screen Shot 2021-10-12 at 8 49 13 PM" src="https://user-images.githubusercontent.com/41453073/137064036-88da677a-79d5-4c19-bfee-a017a1b41244.png">
 
 ## Stretch Goals
 
--Add more intricate market performance, graphs
+-Add more intricate market performance, graphs, etc.
 
