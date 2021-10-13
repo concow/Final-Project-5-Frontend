@@ -31,46 +31,46 @@ for cash, and add interested stocks to a watchlist. I plan on using an external 
 
 ## GET /api/user/:id
 
-``{ 
+```{ 
   id: 1,
   username: "johnnyboy",
   email: "jobo@gmail.com",
   password_digest: "",
   user_balance: 10000
-}``
+}```
 
 ## POST /api/user
 
-``{ 
+```{ 
   username: "johnnyboy",
   password : "password",
   user_balance: 10000
-}``
+}```
 
 ## POST /api/orders
 
-``{ 
+```{ 
   quantity: 25,
   stock: Tesla,
   buy: true
-}``
+}```
 
 ## GET /api/portfolio/:id
 
-``{ 
+```{ 
   id: 1,
   user_id: 3,
   { include: stocks_purchased }
-}``
+}```
 
 ## GET /api/stocks/:id
 
-``{ 
+```{ 
   id: 45,
   company: Nvidia
   symbol: NVDA
   price: 206.71
-}``
+}```
 
 ## Wireframe
 
