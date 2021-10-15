@@ -14,10 +14,6 @@ export default function Signup() {
 
     const history = useHistory();
 
-    
-        
-    
-
     function handleSignupSubmit(e) {
         e.preventDefault()
         fetch(`${url}/users`, {

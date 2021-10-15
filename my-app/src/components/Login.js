@@ -8,9 +8,6 @@ export default function Login() {
     const url = "http://localhost.com"
     const history = useHistory();
 
-    
-        
-    
 
     function handleLoginSubmit(e) {
         e.preventDefault()
