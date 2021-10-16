@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
 export default function Login() {
 
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
-    const url = "http://localhost.com"
-    const history = useHistory();
+    const url = "http://localhost:3000.com"
+    // const history = useHistory();
 
 
     function handleLoginSubmit(e) {
@@ -21,7 +21,7 @@ export default function Login() {
         })
             .then((r) => r.json())
             .then((data) => {
-                history.push("/home");
+                // history.push("/home");
             }
             );
     }
