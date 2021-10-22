@@ -1,60 +1,101 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 export default function Signup() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [user_balance, setUserBalance] = useState("");
+  const [created, setCreated] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  //   const production = "https://afternoon-basin-98008.herokuapp.com/";
+  //   const development = "http://localhost:3000/";
+  //   const url = process.env.NODE_ENV === "production" ? production : development;
 
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
+  console.log("process log", process.env.NODE_ENV);
 
-    const production = "https://afternoon-basin-98008.herokuapp.com/";
-    const development = "http://localhost:3000/"
-    const url = (process.env.NODE_ENV === "production" ? production : development)
+  //   const history = useHistory();
+  //   history.push("/home");
+  function createUser(e) {
+    e.preventDefault();
+    e.target.reset();
 
-    console.log("process log", process.env.NODE_ENV)
+    let user = {
+        username,
+        password,
+        email,
+        user_balance,
+    };
 
-    const history = useHistory();
+    fetch("http://localhost:3000/users", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({ user }),
+    })
+      .then((r) => r.json())
+      .then((response) => {
+        if (response.status === "created") {
+          setCreated(true);
+          setErrorMessage("");
+        }
+      })
+      .catch((response) =>
+        setErrorMessage(
+          "Uh-oh! It didn't work...Make sure your server is running!"
+        )
+      );
+  }
 
-    function handleSignupSubmit(e) {
-        e.preventDefault()
-        fetch(`${url}/users`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json",
-            },
-            body: JSON.stringify({user: {username, password}}),
-        })
-            .then((r) => r.json())
-            .then((data) => {
-                history.push("/home");
-            }
-            );
-    }
-
-    return (
+  return (
+    <div>
+      {created ? (
+        <Redirect to="/login" />
+      ) : (
         <div>
-            <form onSubmit={handleSignupSubmit}>
-                Username:
-                <input
-                    className="login-inputs"
-                    type="text"
-                    id="username"
-                    placeholder=" Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                Password:
-                <input
-                    className="login-inputs"
-                    type="password"
-                    id="password"
-                    placeholder=" Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Signup</button>
-            </form>
-
+          <div className="please-log-in">
+            <p>{errorMessage}</p>
+          </div>
+          <br />
+          <form onSubmit={createUser}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <br />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <br />
+            <input
+              type="text"
+              name="userbalance"
+              placeholder="User Balance"
+              onChange={(e) => setUserBalance(e.target.value)}
+            />
+            <br />
+            <br />
+            <button type="submit">Submit</button>
+          </form>
         </div>
-    )
+      )}
+      <br />
+      <br />
+    </div>
+  );
 }
