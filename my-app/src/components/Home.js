@@ -1,24 +1,12 @@
-import React from 'react';
+import React from "react";
 
-export default function Home() {
+export default function Home({ currentUser }) {
+    console.log(currentUser)
   return (
-    <div className="home-paragraph">
-      {/* Completely unneccessary welcome img, but why not make this at least a little fun */}
-      <img
-        alt="home-pic"
-        className="home-pic"
-        src="https://c.tenor.com/XK15GIbeZEEAAAAC/mark-wahlberg-where-do-i-go.gif"
-      />
-      <br />
-      <p>Try to go to the Auth Check link above and try to do a fetch.</p>
-      <p>
-        The route on the backend is authenticated, <br />
-        meaning you need a token to get access!
-      </p>
-      <p>
-        After you log in and get it to work, <br />
-        feel free to pick apart this code to see how!
-      </p>
+    <div className="home-page">
+      <div className="welcome-message">
+        <p>Hello {currentUser.username}! Ready to Trade?</p>
+      </div>
     </div>
   );
 }

@@ -83,23 +83,4 @@
 //         }
 //         );
 // }
-// useEffect(() => {
-//   const token = localStorage.token;
-//   console.log("token here => " + token);
-//   fetch(`http://localhost:3000/profile`, {
-//     method: "GET",
-//     headers: {
-//       Authorization: `Bearer ${token}`,
-//     },
-//   }).then((response) => {
-//     if (response.ok) {
-//       response.json().then((data) => {
-//         setLoggedIn(true);
-//         setUser(data.user);
-//         history.push("/home");
-//       });
-//     } else {
-//       console.log("Must Log In");
-//     }
-//   });
-// }, []);
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const URL = "http://localhost:3000/stocks";
 
@@ -16,15 +16,18 @@ export default function Trade({ loggedIn }) {
       .then((res) => res.json())
       .then((stocks) => setStocks(stocks));
   }
-
+    //   function getStocks(company, symbol, price) {
+    //     useEffect(() => {
+    //       fetch("http://localhost:3000/stocks")
+    //         .then((response) => response.json())
+    //         .then((stocks) => console.log(stocks))
+    //         // .then((stocks) => setStocks(stocks));
+    //     }, []);
+    //   }
   function showFetchResponse() {
     if (stocks.length > 1) {
       return stocks.map((stock) => {
-        return (
-          <span key={stock.id}>
-            {stock.company}
-          </span>
-        );
+        return <span key={stock.id}>{stock.company}</span>;
       });
     } else {
       return (

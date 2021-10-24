@@ -1,30 +1,14 @@
 import React, { useState } from "react";
 // import { useHistory } from "react-router-dom";
 
-export default function Login({ setCurrentUser }) {
+export default function Login({ onLogin }) {
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  function handleLogin(event) {
-    event.preventDefault();
-    event.target.reset();
-
-    const user = { username, password };
-
-    fetch("http://localhost:3000/login", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ user }),
-    })
-      .then((r) => r.json())
-      .then((response) => {
-        localStorage.token = response.jwt;
-        setCurrentUser(response.user);
-        console.log(response.user);
-      });
+  function handleLogin(e) {
+    e.preventDefault();
+    onLogin(username, password);
   }
 
   return (
