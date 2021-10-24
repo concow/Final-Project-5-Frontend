@@ -34,6 +34,11 @@ export default function App() {
   //   setLoggedIn(true);
   //   console.log(currentUser);
   // }
+    // useEffect(() => {
+    //   fetch("http://localhost:3000/stocks")
+    //     .then((response) => response.json())
+    //     .then((data) => setStocks(data), setLoggedIn(true));
+    // }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -151,7 +156,7 @@ export default function App() {
               <Home currentUser={user} />
             </Route>
             <Route path="/trade">
-              <Trade currentUser={user} />
+              <Trade currentUser={user} loggedIn={loggedIn}  />
             </Route>
             <Route path="/portfolio">
               <Portfolio currentUser={user} />
