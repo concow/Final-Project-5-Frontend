@@ -90,7 +90,7 @@ export default function App() {
     });
   }
 
-  function onSignup(username, password) {
+  function onSignup(email, username, password, user_balance) {
     fetch(`http://localhost:3000/users`, {
       method: "POST",
       headers: {
@@ -99,8 +99,10 @@ export default function App() {
       },
       body: JSON.stringify({
         user: {
+          email: `${email}`,
           username: `${username}`,
           password: `${password}`,
+          user_balance: `${user_balance}`,
         },
       }),
     }).then((response) => {
@@ -143,13 +145,13 @@ export default function App() {
               </button>
             </nav> */}
           <nav className="nav-container">
-            <Link className="nav-links" to="/">Home | </Link>
-            <Link className="nav-links" to="/trade">  Trade | </Link>
-            <Link className="nav-links" to="/portfolio"> Portfolio | </Link>
-            <Link className="nav-links" to="/watchlist"> Watchlist </Link>
-            <button className="logout-btn" onClick={logOut}>
+            <h2><Link className="nav-links" to="/"> Home | </Link></h2>
+            <h2><Link className="nav-links" to="/trade">  Trade | </Link></h2>
+            <h2><Link className="nav-links" to="/portfolio"> Portfolio | </Link></h2>
+            <h2><Link className="nav-links" to="/watchlist"> Watchlist </Link></h2>
+           <h2> <button className="logout-btn" onClick={logOut}>
               Logout
-            </button>
+            </button></h2>
           </nav>
           <Switch>
             <Route exact path="/">
@@ -161,9 +163,9 @@ export default function App() {
             <Route path="/portfolio">
               <Portfolio currentUser={user} />
             </Route>
-            {/* <Route path="/login">
-              <Login />
-            </Route> */}
+            <Route path="/login">
+              <Login onLogin={onLogin}/>
+            </Route>
             <Route path="/signup">
               <SignUp onSignup={onSignup}/>
             </Route>

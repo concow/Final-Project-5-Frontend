@@ -43,3 +43,10 @@
   justify-content: flex-end;
   padding: 5%;
 }
+
+.stock-display {
+  border-color: aqua;
+  border-style: groove;
+  border-radius: 2em;
+  border-spacing: 5em;
+}
