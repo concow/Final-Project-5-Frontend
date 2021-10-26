@@ -1,39 +1,36 @@
 import React, { useState, useEffect } from "react";
 import Inventory from "./Inventory";
-const URL = "http://localhost:3000/stocks";
+import Orders from "./Orders";
 
 export default function Trade({ currentUser, loggedIn }) {
   const [stocks, setStocks] = useState([]);
-
-  
-//   function authorizedFetch() {
-//     fetch(URL, {
-//       headers: {
-//         Authorization: `Bearer ${localStorage.token}`,
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//     })
-//       .then((res) => res.json())
-//     //   .then((stocks) => setStocks(stocks));
-//         .then((stocks) => console.log(stocks));
-//   }
-//   authorizedFetch();
+  const [order, setOrder] = useState([]);
  
+  function handleAddStock(newStock) {
+    // console.log("Am I in here")
+    // const stockAvail = order.find((stock) => stock.id === newStock.id);
+    // if (!stockAvail) {
+      // console.log(setOrder)
+      setOrder([...order, newStock]);
+      console.log(setOrder)
+    // }
+  }
 
-useEffect(() => {
+  useEffect(() => {
     fetch("http://localhost:3000/stocks")
       .then((response) => response.json())
-       .then((stocks) => setStocks(stocks));
-        //  .then((stocks) => console.log(stocks))
-}, []);
+      .then((stocks) => setStocks(stocks));
+    //  .then((stocks) => console.log(stocks))
+  }, []);
 
   return (
     <div className="stock-container">
-      {/* <button onClick={authorizedFetch}>Click me to fetch a stock</button> */}
-      <h2>Stocks</h2>
+      <div className="order-component">
+        <Orders handleAddStock={handleAddStock} />
+      </div>
       <div className="stocks">
         {/* {stocks.map((stocks) => console.log(stocks))} */}
+        <h2>Stocks</h2>
         {stocks.map((stock) => (
           <Inventory
             key={stock.id}
@@ -42,6 +39,8 @@ useEffect(() => {
             symbol={stock.symbo}
             price={stock.price}
             currentUser={currentUser}
+            setStocks={setStocks}
+            handleAddStock={handleAddStock}
           />
         ))}
       </div>

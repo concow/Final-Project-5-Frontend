@@ -14,8 +14,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Portfolio from "./components/Portfolio";
 import Trade from "./components/Trade";
-import Inventory from "./components/Inventory";
-import Watchlist from "./components/Watchlist";
+import Orders from "./components/Orders";
 
 export default function App() {
   const [stocks, setStocks] = useState([]);
@@ -29,16 +28,11 @@ export default function App() {
   // const development = "http://localhost:3000"
   // const url = process.env.NODE_ENV ? production : development;
 
-  // function setCurrentUser(currentUser) {
-  //   setUser(currentUser);
-  //   setLoggedIn(true);
-  //   console.log(currentUser);
-  // }
-    // useEffect(() => {
-    //   fetch("http://localhost:3000/stocks")
-    //     .then((response) => response.json())
-    //     .then((data) => setStocks(data), setLoggedIn(true));
-    // }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:3000/stocks")
+  //     .then((response) => response.json())
+  //     .then((data) => setStocks(data), setLoggedIn(true));
+  // }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -75,17 +69,18 @@ export default function App() {
         },
       }),
     }).then((response) => {
-      console.log(response);
+      // console.log(response);
       if (response.ok) {
         response.json().then((data) => {
           console.log("hi" + data.jwt);
           setUser(data.user);
           setLoggedIn(true);
           localStorage.setItem("jwt", data.jwt);
-          console.log("signed in!!!!!!!!!!!!!!!!!!");
+          // history.push("/home");
+          console.log("!!! SIGNED IN !!!");
         });
       } else {
-        console.log("wrong username/password");
+        console.log("Incorrect Username or Password");
       }
     });
   }
@@ -111,6 +106,7 @@ export default function App() {
           setUser(data.user);
           setLoggedIn(true);
           localStorage.setItem("jwt", data.jwt);
+          // history.push("/login");
         });
       } else {
         console.log("form incorrectly filled out");
@@ -128,6 +124,7 @@ export default function App() {
   //   localStorage.clear()
   //   setUser(null)
   //   setLoggedIn(false)
+  //   history.push("/login")
   // }
 
   return (
@@ -145,31 +142,64 @@ export default function App() {
               </button>
             </nav> */}
           <nav className="nav-container">
-            <h2><Link className="nav-links" to="/"> Home | </Link></h2>
-            <h2><Link className="nav-links" to="/trade">  Trade | </Link></h2>
-            <h2><Link className="nav-links" to="/portfolio"> Portfolio | </Link></h2>
-            <h2><Link className="nav-links" to="/watchlist"> Watchlist </Link></h2>
-           <h2> <button className="logout-btn" onClick={logOut}>
-              Logout
-            </button></h2>
+            <h2>
+              <Link className="nav-links" to="/">
+                Home |{" "}
+              </Link>
+            </h2>
+            <h2>
+              <Link className="nav-links" to="/trade">
+                {"  "}
+                Trade |{" "}
+              </Link>
+            </h2>
+            <h2>
+              <Link className="nav-links" to="/portfolio">
+                {" "}
+                Portfolio |{" "}
+              </Link>
+            </h2>
+            <h2>
+              <Link className="nav-links" to="/watchlist">
+                {" "}
+                Watchlist |{" "}
+              </Link>
+            </h2>
+            <h2>
+              <Link className="nav-links" to="/orders">
+                {" "}
+                Orders
+              </Link>
+            </h2>
+            <h2>
+              <button className="logout-btn" onClick={logOut}>
+                Logout
+              </button>
+            </h2>
           </nav>
-          <Switch>
-            <Route exact path="/">
-              <Home currentUser={user} />
-            </Route>
-            <Route path="/trade">
-              <Trade currentUser={user} loggedIn={loggedIn}  />
-            </Route>
-            <Route path="/portfolio">
-              <Portfolio currentUser={user} />
-            </Route>
-            <Route path="/login">
-              <Login onLogin={onLogin}/>
+          {/* <Switch> */}
+          <Route exact path="/">
+            <Home currentUser={user} />
+          </Route>
+          <Route path="/trade">
+            <Trade currentUser={user} loggedIn={loggedIn} />
+          </Route>
+          <Route path="/portfolio">
+            <Portfolio currentUser={user} />
+          </Route>
+          <Route path="/orders">
+            <Orders currentUser={user} />
+          </Route>
+          <Route path="/signup">
+              <SignUp />
+            </Route> 
+           <Route path="/login">
+              <Login onLogin={onLogin} />
             </Route>
             <Route path="/signup">
-              <SignUp onSignup={onSignup}/>
+              <SignUp onSignup={onSignup} />
             </Route>
-          </Switch>
+          {/* </Switch> */}
         </Router>
       ) : (
         <Login onLogin={onLogin} onSignup={onSignup} />

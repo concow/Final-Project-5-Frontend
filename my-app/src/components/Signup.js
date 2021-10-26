@@ -12,7 +12,7 @@ export default function Signup({ onSignup }) {
   //   const development = "http://localhost:3000/";
   //   const url = process.env.NODE_ENV === "production" ? production : development;
 
-//   console.log("process log", process.env.NODE_ENV);
+  //   console.log("process log", process.env.NODE_ENV);
 
   function handleSignup(e) {
     e.preventDefault();
@@ -22,6 +22,7 @@ export default function Signup({ onSignup }) {
   return (
     <div>
       <form onSubmit={handleSignup}>
+        <h1>Signup</h1>
         <input
           type="text"
           name="email"

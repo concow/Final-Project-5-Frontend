@@ -84,3 +84,8 @@
 //         );
 // }
 
+  // function setCurrentUser(currentUser) {
+  //   setUser(currentUser);
+  //   setLoggedIn(true);
+  //   console.log(currentUser);
+  // }
