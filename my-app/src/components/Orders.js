@@ -1,61 +1,32 @@
-import Inventory from "./Inventory";
 import React, { useState, useEffect } from "react";
+import OrderList from "./OrderList";
+import Portfolio from "./Portfolio";
 
-export default function Orders({ onOrderSubmit, handleAddStock }) {
-  const [order, setOrder] = useState([]);
-  const [sell, setSell] = useState([]);
-  const [quantity, setQuantity] = useState(" ");
-  const [price, setPrice] = useState(" ");
-  const [company, setCompany] = useState(" ");
-
-  function onOrderSubmit(e) {
-    e.preventDefault();
-
-    const newStockOrder = {
-      company,
-      quantity,
-      price,
-    };
-    console.log(newStockOrder);
-    handleAddStock(newStockOrder);
-    setCompany(" ");
-    setQuantity(" ");
-    setPrice(" ");
-  }
+export default function Orders({ handleAddStock, stocks }) {
+ 
 
   return (
-    <div className="order-form">
-      <form className="order-form" onSubmit={onOrderSubmit}>
-        <h2>Initiate Order</h2>
-        <div>
-          <label>Company Name: </label>
-          <input
-            type="text"
-            value={company}
-            onChange={(e) => setCompany(e.target.value)}
+    <div className="order-container">
+      <div className="list-container">
+        <h2>Current Stock Orders</h2>
+        {/* {stocks.map((stocks) => console.log(stocks))} */}
+        {stocks.map((stock) => (
+          <OrderList
+            key={stock.id}
+            stock={stock}
+            // name={stock.company}
+            // symbol={stock.symbol}
+            // price={stock.price}
+            // currentUser={currentUser}
+            // setStocks={setStocks}
+            handleAddStock={handleAddStock}
           />
-        </div>
-        <div>
-          <label>Number of Shares: </label>
-          <input
-            type="integer"
-            value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Price: </label>
-          <input
-            type="text"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <br></br>
-        <button className="buy-button" type="submit">
-          Add to Order
-        </button>
-      </form>
+        ))}
+        {/* {stocks.map((stock) => console.log(stock))} */}
+        {/* {stocks.map((stock) => (
+          <Portfolio key={stock.id} stock={stock}/>
+        ))} */}
+      </div>
     </div>
   );
 }

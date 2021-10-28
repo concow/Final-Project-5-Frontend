@@ -8,11 +8,16 @@
   background-size: cover;
   color: #000300;
 } */
+
 .nav-container {
   display: flex;
-  flex-direction: row;
+  /* flex-direction: row;
   justify-content: flex-end;
-  padding: 5%;
+  padding: 5%; */
+  border-style: solid;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* height: 200vh; */
 }
 
 .stock-card {
@@ -27,5 +32,10 @@
   border-style: groove;
   border-radius: 2em;
   border-spacing: 5em;
-
 }
+
+.order-card {
+  border-style: groove;
+}
+
+/* font-family: 'Source Sans Pro', sans-serif; */

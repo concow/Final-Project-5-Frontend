@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Orders from './Orders';
-export default function Inventory({
-  stock,
-  setStocks,
-  stocks,
-  handleAddStock,
-
-}) {
+export default function Inventory({ stock, currentUser }) {
   //   console.log(stock.company);
 
 
@@ -22,35 +16,7 @@ export default function Inventory({
   );
 }
 
-//   function handleBuy(quantity, order_total, buy, sell) {
-//     fetch(`http://localhost:3000/orders`, {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       body: JSON.stringify({
-//         order: {
-//           quantity: `${quantity}`,
-//           order_total: `${order_total}`,
-//           buy: `${buy}`,
-//         },
-//       }),
-//     }).then((response) => {
-//       console.log(response);
-//       if (response.ok) {
-//         response.json().then((data) => {
-//           console.log("hi" + data.jwt);
-//           setBuy(data.buy);
-//           // setLoggedIn(true);
-//           localStorage.setItem("jwt", data.jwt);
-//           console.log("BOUGHT");
-//         });
-//       } else {
-//         console.log("DIDN'T GO THROUGH");
-//       }
-//     });
-//   }
+
 
 // function handleBuyOrder(quantity, order_total) {
 //   fetch(`http://localhost:3000/orders`, {

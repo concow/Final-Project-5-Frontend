@@ -89,3 +89,13 @@
   //   setLoggedIn(true);
   //   console.log(currentUser);
   // }
+
+    // function handleAddStock(newStock) {
+    // console.log("Am I in here")
+    // const stockAvail = order.find((stock) => stock.id === newStock.id);
+    // if (!stockAvail) {
+      // console.log(setOrder)
+      // setOrder([...order, newStock]);
+      // console.log(setOrder)
+    // }
+  // }

@@ -1,12 +1,10 @@
-import "./App.css";
+// import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
   Link,
-  NavLink,
-  useHistory,
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SignUp from "./components/SignUp";
@@ -18,21 +16,22 @@ import Orders from "./components/Orders";
 
 export default function App() {
   const [stocks, setStocks] = useState([]);
-  const [portfolios, setPorfolios] = useState([]);
-  const [watchlists, setWatchlists] = useState([]);
   const [user, setUser] = useState();
   const [loggedIn, setLoggedIn] = useState(false);
-  const history = useHistory();
 
   // const production = "https://afternoon-basin-98008.herokuapp.com";
   // const development = "http://localhost:3000"
   // const url = process.env.NODE_ENV ? production : development;
 
-  // useEffect(() => {
-  //   fetch("http://localhost:3000/stocks")
-  //     .then((response) => response.json())
-  //     .then((data) => setStocks(data), setLoggedIn(true));
-  // }, []);
+  // development = "http://localhost:3000";
+  // const production = "https://phase-5-backend.herokuapp.com/";
+  // const url = process.env.NODE_ENV ? development : production;
+
+  // const url = process.env.NODE_ENV === “production” ? production : development;
+
+  // git push heroku main
+  // heroku run rails db:migrate db:seed
+  // heroku open
 
   useEffect(() => {
     const token = localStorage.getItem("jwt");
@@ -114,10 +113,15 @@ export default function App() {
     });
   }
 
+  function handleAddStock(newOrder) {
+    // console.log(newOrder)
+    setStocks([...stocks, newOrder]);
+  }
+
   function logOut() {
     setUser({});
     setLoggedIn(false);
-    localStorage.token = "";
+    localStorage.token = " ";
   }
 
   // function logOut() {
@@ -131,75 +135,63 @@ export default function App() {
     <div className="App">
       {loggedIn ? (
         <Router>
-          {/* <nav className="navbar-cont">
-              <NavLink to="/">Home | </NavLink>
-              <NavLink to="/trade">Trade | </NavLink>
-              <NavLink to="/portfolio">Portfolio | </NavLink>
-              <NavLink to="/watchlist">Watchlist</NavLink>
-              <NavLink to="/signup">Signup</NavLink>
-              <button className="logout" onClick={logOut}>
-                Logout
-              </button>
-            </nav> */}
+          <div className="app-title">
+            <h1>DayTrader</h1>
+          </div>
           <nav className="nav-container">
             <h2>
               <Link className="nav-links" to="/">
-                Home |{" "}
+                Home
               </Link>
-            </h2>
-            <h2>
               <Link className="nav-links" to="/trade">
-                {"  "}
-                Trade |{" "}
+                Trade
               </Link>
-            </h2>
-            <h2>
               <Link className="nav-links" to="/portfolio">
-                {" "}
-                Portfolio |{" "}
+                Portfolio
               </Link>
-            </h2>
-            <h2>
               <Link className="nav-links" to="/watchlist">
-                {" "}
-                Watchlist |{" "}
+                Watchlist
               </Link>
-            </h2>
-            <h2>
               <Link className="nav-links" to="/orders">
-                {" "}
                 Orders
               </Link>
-            </h2>
-            <h2>
               <button className="logout-btn" onClick={logOut}>
                 Logout
               </button>
             </h2>
           </nav>
-          {/* <Switch> */}
-          <Route exact path="/">
-            <Home currentUser={user} />
-          </Route>
-          <Route path="/trade">
-            <Trade currentUser={user} loggedIn={loggedIn} />
-          </Route>
-          <Route path="/portfolio">
-            <Portfolio currentUser={user} />
-          </Route>
-          <Route path="/orders">
-            <Orders currentUser={user} />
-          </Route>
-          <Route path="/signup">
-              <SignUp />
-            </Route> 
-           <Route path="/login">
+          <Switch>
+            <Route exact path="/">
+              <Home currentUser={user} />
+            </Route>
+            <Route exact path="/trade">
+              <Trade
+                currentUser={user}
+                loggedIn={loggedIn}
+                handleAddStock={handleAddStock}
+              />
+            </Route>
+            <Route exact path="/portfolio">
+              <Portfolio handleAddStock={handleAddStock} />
+            </Route>
+            <Route exact path="/orders">
+              <Orders
+                currentUser={user}
+                setStocks={setStocks}
+                stocks={stocks}
+                handleAddStock={handleAddStock}
+              />
+            </Route>
+            <Route exact path="/signup">
+              {loggedIn ? <Redirect to="/" /> : <SignUp />}
+            </Route>
+            <Route exact path="/login">
               <Login onLogin={onLogin} />
             </Route>
-            <Route path="/signup">
+            <Route exact path="/signup">
               <SignUp onSignup={onSignup} />
             </Route>
-          {/* </Switch> */}
+          </Switch>
         </Router>
       ) : (
         <Login onLogin={onLogin} onSignup={onSignup} />
