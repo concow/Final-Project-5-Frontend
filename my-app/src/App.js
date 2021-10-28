@@ -5,6 +5,7 @@ import {
   Route,
   Redirect,
   Link,
+  useHistory
 } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SignUp from "./components/SignUp";
@@ -13,6 +14,7 @@ import Home from "./components/Home";
 import Portfolio from "./components/Portfolio";
 import Trade from "./components/Trade";
 import Orders from "./components/Orders";
+import Watchlist from "./components/Watchlist";
 
 export default function App() {
   const [stocks, setStocks] = useState([]);
@@ -118,18 +120,18 @@ export default function App() {
     setStocks([...stocks, newOrder]);
   }
 
-  function logOut() {
-    setUser({});
-    setLoggedIn(false);
-    localStorage.token = " ";
-  }
-
   // function logOut() {
-  //   localStorage.clear()
-  //   setUser(null)
-  //   setLoggedIn(false)
-  //   history.push("/login")
+  //   setUser({});
+  //   setLoggedIn(false);
+  //   localStorage.token = " ";
   // }
+
+  function logOut() {
+    localStorage.clear()
+    setUser(null)
+    setLoggedIn(false)
+    // history.push("/login")
+  }
 
   return (
     <div className="App">
@@ -162,7 +164,11 @@ export default function App() {
           </nav>
           <Switch>
             <Route exact path="/">
-              <Home currentUser={user} />
+              <Home
+                currentUser={user}
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn}
+              />
             </Route>
             <Route exact path="/trade">
               <Trade
@@ -174,6 +180,9 @@ export default function App() {
             <Route exact path="/portfolio">
               <Portfolio handleAddStock={handleAddStock} />
             </Route>
+            <Route exact path="/watchlist">
+              <Watchlist />
+            </Route>
             <Route exact path="/orders">
               <Orders
                 currentUser={user}
@@ -182,9 +191,9 @@ export default function App() {
                 handleAddStock={handleAddStock}
               />
             </Route>
-            <Route exact path="/signup">
+            {/* <Route exact path="/signup">
               {loggedIn ? <Redirect to="/" /> : <SignUp />}
-            </Route>
+            </Route> */}
             <Route exact path="/login">
               <Login onLogin={onLogin} />
             </Route>

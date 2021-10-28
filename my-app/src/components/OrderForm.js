@@ -51,26 +51,31 @@ export default function OrderForm({ handleAddStock, currentUser}) {
         <div>
           <label>Company Name: </label>
           <input
-            type="text"
             placeholder="Company Name"
+            name="Company Name"
+            type="text"
             value={company}
             onChange={(e) => setCompany(e.target.value)}
           />
         </div>
+        &nbsp;&nbsp;
         <div>
           <label>Number of Shares: </label>
           <input
-            type="integer"
             placeholder="Number of Shares"
+            name="Shares"
+            type="integer"
             value={quantity}
             onChange={(e) => setQuantity(e.target.value)}
           />
         </div>
+        &nbsp;
         <div>
           <label>Price: </label>
           <input
-            type="text"
             placeholder="Price"
+            name="Price"
+            type="text"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />

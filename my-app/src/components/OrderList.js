@@ -1,5 +1,3 @@
-
-
 export default function OrderList({ stock }) {
     console.log(stock)
 
@@ -7,11 +5,12 @@ export default function OrderList({ stock }) {
 
 
     }
+
     return (
       <div className="orderlist">
         <div className="order-card">
-          <h4>{stock.company}</h4>
-          <h4>{stock.quantity}</h4>
+          <h3>{stock.company}</h3>
+          <h4>{stock.quantity} shares</h4>
           <h4>${stock.price}</h4> 
           &nbsp;&nbsp;&nbsp;&nbsp;
           <button className="dlt-stock-button"

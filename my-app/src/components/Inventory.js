@@ -7,7 +7,7 @@ export default function Inventory({ stock, currentUser }) {
   return (
     <div className="inventory-component">
       <div className="stock-card">
-        <h4>{stock.company}</h4>
+        <h2>{stock.company}</h2>
         <h4>{stock.symbol}</h4>
         <h4>${stock.price}</h4>
         &nbsp;&nbsp;&nbsp;&nbsp;

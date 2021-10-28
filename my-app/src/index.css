@@ -53,12 +53,6 @@ h4 {
   width: 1000px;
 }
 
-.nav-links {
-  /* display: flex;
-  flex-direction: column-reverse;
-  padding: 10%; */
-}
-
 .stock-inventory {
   justify-content: center;
   /* width: 500px; */
@@ -73,7 +67,7 @@ h4 {
 .order-card {
   /* display: flex; */
   margin: auto;
-   margin-top: 50px;
+  margin-top: 50px;
   margin-bottom: 30px;
   padding: 10px;
   width: 250px;
@@ -100,17 +94,19 @@ h4 {
   margin-bottom: 30px;
   padding-bottom: 30px;
   width: 700px;
-  /* border-color: aqua; */
+  justify-content: center;
   border-style: solid;
   border-radius: 2em;
 }
 
-.order-form {
-  justify-content: center;
-}
-
 .order-card {
-  border-style: groove;
+  justify-content: center;
+  border-color: aqua;
+  border-style: solid;
+  width: 250px;
+  border-radius: 2em;
+  border-spacing: 5em;
+  padding: 1em;
 }
 
 a {

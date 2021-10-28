@@ -8,17 +8,12 @@ export default function Orders({ handleAddStock, stocks }) {
   return (
     <div className="order-container">
       <div className="list-container">
-        <h2>Current Stock Orders</h2>
+        <h1>Current Stock Orders</h1>
         {/* {stocks.map((stocks) => console.log(stocks))} */}
         {stocks.map((stock) => (
           <OrderList
             key={stock.id}
             stock={stock}
-            // name={stock.company}
-            // symbol={stock.symbol}
-            // price={stock.price}
-            // currentUser={currentUser}
-            // setStocks={setStocks}
             handleAddStock={handleAddStock}
           />
         ))}

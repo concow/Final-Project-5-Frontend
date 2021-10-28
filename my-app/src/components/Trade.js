@@ -19,7 +19,7 @@ export default function Trade({ currentUser, handleAddStock }) {
       <div className="order-form-trade">
         <OrderForm currentUser={currentUser} handleAddStock={handleAddStock} />
       </div>
-      <h2>Stocks</h2>
+      <h1>Stocks</h1>
       <div className="stock-inventory">
         {/* {stocks.map((stocks) => console.log(stocks))} */}
         {/* <h2>Stocks</h2> */}
