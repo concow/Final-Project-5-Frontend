@@ -22,12 +22,12 @@ code {
 
 .app-title {
 font-family: 'Gruppo', cursive;
-font-size: 3em;
+font-size: 5em;
 }
 
-/* h1 {
+h1 {
   font-family: "Source Sans Pro", sans-serif;
-} */
+}
 
 h2 {
   font-family: "Source Sans Pro", sans-serif;
@@ -51,12 +51,7 @@ h4 {
   border-style: solid;
   border-color: gray;
   width: 1000px;
-}
-
-.nav-links {
-  /* display: flex;
-  flex-direction: column-reverse;
-  padding: 10%; */
+  padding: 20px;
 }
 
 .stock-inventory {
@@ -64,28 +59,31 @@ h4 {
   /* width: 500px; */
 }
 
- .inventory-component {
+.inventory-component {
   display: flex;
   justify-content: center;
   padding-bottom: 15px;
 } 
 
 .order-card {
-  /* display: flex; */
   margin: auto;
-   margin-top: 50px;
+  /* justify-content: center; */
+  margin-top: 50px;
   margin-bottom: 30px;
   padding: 10px;
   width: 250px;
+  border-radius: 2em;
+  border-spacing: 5em;
 }
+
 .stock-card {
   justify-content: center;
   border-color: aqua;
-  border-style: groove;
+  border-style: solid;
   width: 250px;
   border-radius: 2em;
   border-spacing: 5em;
-  padding: 1em;
+  padding: 50px;
 }
 
 .order-form-trade {
@@ -113,6 +111,10 @@ h4 {
   border-style: groove;
 }
 
+.order-container {
+  padding: 20px;
+}
+
 a {
   text-decoration: none;
   padding-left: 15px;
@@ -121,4 +123,9 @@ a {
 
 a:visited {
   color: #71706e;
+}
+
+.watchlist-container {
+  padding: 20px;
+
 }

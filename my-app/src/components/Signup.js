@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
-import { Redirect } from "react-router-dom";
 
 export default function Signup({ onSignup }) {
   const [username, setUsername] = useState("");
@@ -20,7 +18,7 @@ export default function Signup({ onSignup }) {
   }
 
   return (
-    <div>
+    <div className ="signup-form">
       <form onSubmit={handleSignup}>
         <h1>Signup</h1>
         <input
@@ -61,5 +59,9 @@ export default function Signup({ onSignup }) {
         <button type="submit">Submit</button>
       </form>
     </div>
+    // <br />
+    // <div className="login-link">
+
+    // </div>
   );
 }

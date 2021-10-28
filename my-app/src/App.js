@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import Portfolio from "./components/Portfolio";
 import Trade from "./components/Trade";
 import Orders from "./components/Orders";
+import Watchlist from "./components/Watchlist";
 
 export default function App() {
   const [stocks, setStocks] = useState([]);
@@ -117,18 +118,17 @@ export default function App() {
     // console.log(newOrder)
     setStocks([...stocks, newOrder]);
   }
-
   function logOut() {
-    setUser({});
+    localStorage.clear();
+    setUser(null);
     setLoggedIn(false);
-    localStorage.token = " ";
+    // history.push("/login")
   }
 
   // function logOut() {
-  //   localStorage.clear()
-  //   setUser(null)
-  //   setLoggedIn(false)
-  //   history.push("/login")
+  //   setUser({});
+  //   setLoggedIn(false);
+  //   localStorage.token = " ";
   // }
 
   return (
@@ -136,7 +136,7 @@ export default function App() {
       {loggedIn ? (
         <Router>
           <div className="app-title">
-            <h1>DayTrader</h1>
+            <p><b>DayTrader</b></p>
           </div>
           <nav className="nav-container">
             <h2>
@@ -182,19 +182,25 @@ export default function App() {
                 handleAddStock={handleAddStock}
               />
             </Route>
-            <Route exact path="/signup">
-              {loggedIn ? <Redirect to="/" /> : <SignUp />}
+            <Route exact path="/watchlist">
+              <Watchlist />
             </Route>
-            <Route exact path="/login">
+            {/* <Route exact path="/login">
               <Login onLogin={onLogin} />
             </Route>
             <Route exact path="/signup">
               <SignUp onSignup={onSignup} />
+            </Route> */}
+            <Route exact path="/login">
+               {loggedIn ? <Redirect to="/" /> : <Login onLogin={onLogin} />}
+            </Route>
+            <Route exact path="/signup">
+              {loggedIn ? <Redirect to="/" /> : <SignUp onSignUp={onSignup} />}
             </Route>
           </Switch>
         </Router>
       ) : (
-        <Login onLogin={onLogin} onSignup={onSignup} />
+        <Login onLogin={onLogin} />
       )}
     </div>
   );
